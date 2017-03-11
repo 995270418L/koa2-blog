@@ -1,0 +1,21 @@
+body,button,input,select,testarea{
+	font-weight: 300;
+	font-family:"Open Sans",Tahoma,arial,"Hiragino Sans GB","Hiragino Sans GB W3",STHeiti,"Microsoft YaHei",sans-serif
+}
+
+body{
+	font-size: 18px;
+	color: #222;
+}
+
+
+.page_header_bar{
+	position: fixed;
+	left:0;
+	top:0;
+	width:100%;
+	height:60px;
+	z-index: 100;  //堆叠顺序,也就是离用户的距离
+	transition: background 1s linear;
+	background: rgba(255,255,255,.2);
+}

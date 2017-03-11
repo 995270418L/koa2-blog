@@ -1,0 +1,44 @@
+{% extends '../base.html' %} {% block body %}
+<div class="nav">
+	<div class="ui grid">
+		<div class="four wide column"></div>
+		<div class="eight wide column">
+			<a href="/posts"><h1>{{ blog_title }}</h1></a>
+			<p> {{ blog_description }}</p>
+		</div>
+		<div class="nav-setting">
+			<div class="ui buttons">
+			<div class="ui floating dropdown button">
+				<i class="icon bars"></i>
+				<div class="menu">
+					{% if user %}
+				  	  <a class="item" href="/posts?author={{ user._id }}">个人主页</a>
+				  	  <a class="item" href="/posts/create">发表文章</a>
+				  	  <a class="item" href="/signout">登出</a>
+					{% else %}
+						<a class="item" href="/signin">登录</a>
+						<a class="item" href="/signup">注册</a>
+					{% endif %}
+				</div>
+		</div>
+	</div>
+</div>
+	</div>
+</div>
+<div class="ui grid">
+		<div class="four wide column">
+		</div>
+		<div class="eight wide column">
+			{% if success %}
+				<div class="ui success message">
+					<p>{{ success }}</p>
+				</div>
+			{% elif error %}
+				<div class="ui error message">
+					<p>{{ error }}</p>
+				</div>
+			{% endif %}
+		</div>
+</div>
+{% block main %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}} - floder</title>
+	<link rel="stylesheet" type="text/css" href="/css/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/editor/0.1.0/editor.css">
+	<script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/js/semantic.min.js"></script>
+</head>
+<body>
+	{% block body %}{% endblock %}
+	<script type="text/javascript">
+		'use strict';
+		//编辑表单验证
+	    function checkEditForm(){
+            let title = document.forms['editForm']['title'].value;
+            let content = document.forms['editForm']['content'].value;
+            if(title.trim().length === 0){
+                alert('标题不能为空');
+                return false;
+            }
+            if(content.trim().length === 0){
+                alert('内容不能为空!');
+                return false;
+            }
+        }
+		//注册表单验证
+        function checkSignupForm(){
+			let _form = document.forms['signupForm'];
+			let _name = document.forms['signupForm']['name'].value;
+			let _password = document.forms['signupForm']['password'].value;
+			let _repassword = document.forms['signupForm']['repassword'].value;
+			let _gender = document.forms['signupForm']['gender'].value;
+			let _avatar = document.forms['signupForm']['avatar'].value;
+			let _bio = document.forms['signupForm']['bio'].value;
+
+			if(_name.trim().length > 11 || _name.trim().length < 1){
+				alert('用户名格式不正确!');
+				_form.reset();
+				return false;
+			}
+			if(_password.length < 6 || _password.length >30){
+				alert('密码格式不正确!');
+				_form.reset();
+				return false;
+			}
+			if(_repassword !== _password){
+				alert('两次密码输入不一致!');
+				_form.reset();
+				return false;
+			}
+			if(['m','f','x'].indexof(_gender) === -1){
+				alert('性别只能是‘男’，‘女’，‘保密’');
+				return false;
+			}
+			if(avatar === ''){
+				alert('头像不能为空!');
+				return false;
+			}
+			if(_bio.trim().length >30 || _bio.trim().length < 1){
+				alert('个人简介不能超过30个字符');
+				return false;
+			}
+			return isOK;
+		}
+		//留言表单验证
+		function checkLeaveFrom(){
+			let content = document.forms['leaveForm']['content'];
+			if(content.trim().length === 0 || content.trim().length === null ){
+				alert('不能提交空留言');
+				return false;
+			}
+		}
+		$('.ui .dropdown').dropdown();
+		$('.post-content .avatar').popup({
+			inline:true,
+			position: 'bottom right',
+			lastResort:'bottom right'
+		});
+	</script>
+</body>
+</html>

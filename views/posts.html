@@ -1,0 +1,42 @@
+{% extends './components/header.html' %}{% block main %}
+	{% for item in posts%}
+		<div class="post-content">
+			<div class="ui grid">
+				<div class="four wide column">
+					<a class="avatar" href="/posts?author={{item.author._id}}"
+					data-title="{{item.author.name}}"
+					data-content="{{item.author.bio}}">
+					<img class="avatar" src="/img/{{item.author.avatar}}">
+					</a>
+				</div>
+				<div class="eight wide column">
+					<div class="ui segment">
+						<h3><a href="/posts/{{item._id}}">{{item.title}}</a></h3>
+						<pre>{{item.content | safe }}</pre>
+						<div>
+							<span class="tag">{{ item.created_at}}</span>
+							<span class="tag right">
+								<span>浏览{{item.pv}}</span>
+								<span>留言{{item.commentsCount}}</span>
+								{% if user %}
+								{% if item.author._id %}
+								{% if (user._id.toString() === item.author._id.toString())%}
+									<div class="ui inline dropdown">
+										<div class="text"></div>
+										<i class="dropdown icon"></i>
+										<div class="menu">
+											<div class="item"><a href="/posts/{{item._id}}/edit">编辑</a></div>
+											<div class="item"><a href="/posts/{{item._id}}/remove">删除</a></div>
+										</div>
+									</div>
+								{% endif %}
+								{% endif %}
+								{% endif %}
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor%}
+{% endblock %}

@@ -1,0 +1,37 @@
+{
+  "name": "f-blog",
+  "version": "1.0.0",
+  "description": "'floder's blog'",
+  "main": "app.js",
+  "scripts": {
+    "test": "node --harmony ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha"
+  },
+  "author": "floder",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.0.1-alpha.8",
+    "koa-bodyparser": "^3.2.0",   //解析post请求的文本数据
+    "koa-flash2": "0.0.2",       //往session里添加flash消息
+    "koa-generic-session": "^1.11.5",  //session依赖的一个包
+    "koa-logger-winston": "0.0.2",     //日志包
+    "koa-multer": "^1.0.1",             //解析post请求的文件
+    "koa-nunjucks-next": "^1.1.2",      //适用于koa的nunjucks模板
+    "koa-redis": "^2.1.3",             //将session保存在redis中的一个中间件
+    "koa-router": "^7.0.1",				//路由文件
+    "koa-session2": "^2.2.1",			//koa2的session文件
+    "koa-static": "^3.0.0",				//静态文件映射的middleware
+    "markdown": "^0.5.0",	
+    "marked": "^0.3.6",                //将markdown格式的文件转换成html
+    "mocha": "^3.2.0",					//mocha测试
+    "moment": "^2.17.1",				//日期格式化工具
+    "mongolass": "^2.4.2",              //操作mongodb的一个工具
+    "objectid-to-timestamp": "^1.3.0",   //从ObjectId中抽取时间
+    "redis": "^2.6.5",					//操作redis的工具
+    "semantic-ui": "^2.2.9",			//前端工具semantic-ui，也可以使用cdn地址
+    "supertest": "^3.0.0",				//和mocha整合测试
+    "winston": "^2.3.1"                 //winston模板
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5"                //代码覆盖率工具
+  }
+}
